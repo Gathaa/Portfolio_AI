@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aimen Guedhami | AI/ML Software Engineer</title>
+    <meta name="description" content="Software Engineer specializing in AI and Machine Learning. Expert in architecting scalable AI solutions with deep experience in RAG, NLP, and Computer Vision.">
+    <meta name="author" content="Aimen Guedhami">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0a0e1a;
+            --bg-darker: #050810;
+            --primary: #00f5ff;
+            --secondary: #a855f7;
+            --accent: #f059ff;
+            --text: #e0e7ff;
+            --text-muted: #8b92b0;
+            --card-bg: rgba(15, 23, 42, 0.6);
+            --border: rgba(0, 245, 255, 0.2);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .blob-1 {
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            top: -10%;
+            left: -10%;
+            animation-delay: 0s;
+        }
+
+        .blob-2 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            bottom: -10%;
+            right: -10%;
+            animation-delay: 3s;
+        }
+
+        .blob-3 {
+            width: 350px;
+            height: 350px;
+            background: linear-gradient(90deg, var(--accent), var(--primary));
+            top: 50%;
+            left: 50%;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            25% {
+                transform: translate(100px, -100px) scale(1.1);
+            }
+            50% {
+                transform: translate(-50px, 100px) scale(0.9);
+            }
+            75% {
+                transform: translate(150px, 50px) scale(1.05);
+            }
+        }
+
+        /* Grid Pattern */
+        .grid-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 245, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 245, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(50px);
+            }
+        }
+
+        /* Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 50%;
+            animation: particleFloat 15s infinite;
+            opacity: 0.6;
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 2s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 4s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 1s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 3s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 5s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 2.5s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 4.5s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 1.5s; }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 26, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1.5rem 2rem;
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 245, 255, 0.5);
+            animation: logoGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes logoGlow {
+            0%, 100% {
+                filter: drop-shadow(0 0 10px rgba(0, 245, 255, 0.5));
+            }
+            50% {
+                filter: drop-shadow(0 0 20px rgba(0, 245, 255, 0.8));
+            }
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section */
+        section {
+            padding: 8rem 2rem;
+            position: relative;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 100px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(0, 245, 255, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 50px;
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(0, 245, 255, 0.6);
+            }
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 5s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .hero h2 {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--bg-dark);
+            box-shadow: 0 0 40px rgba(0, 245, 255, 0.4);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 60px rgba(0, 245, 255, 0.6);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: rgba(0, 245, 255, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(0, 245, 255, 0.3);
+        }
+
+        /* Section Title */
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 4rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(168, 85, 247, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--primary);
+            box-shadow: 0 20px 60px rgba(0, 245, 255, 0.3);
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 245, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s;
+        }
+
+        .card:hover::after {
+            animation: shimmer 1.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) rotate(45deg);
+            }
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Skills Section */
+        .skills-category {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+
+        .skills-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+            animation: heightGrow 2s ease-in-out infinite;
+        }
+
+        @keyframes heightGrow {
+            0%, 100% {
+                height: 50%;
+                top: 0;
+            }
+            50% {
+                height: 100%;
+                top: 0;
+            }
+        }
+
+        .skills-category:hover {
+            border-color: var(--primary);
+            box-shadow: 0 10px 40px rgba(0, 245, 255, 0.2);
+        }
+
+        .skills-category h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-tag {
+            padding: 0.6rem 1.5rem;
+            background: rgba(0, 245, 255, 0.1);
+            border: 1px solid rgba(0, 245, 255, 0.3);
+            border-radius: 50px;
+            color: var(--text);
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-tag::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(0, 245, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s, height 0.4s;
+        }
+
+        .skill-tag:hover::before {
+            width: 200%;
+            height: 200%;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 245, 255, 0.3);
+        }
+
+        /* Education Card */
+        .education-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--primary);
+            border-radius: 20px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 245, 255, 0.1), transparent);
+            border-radius: 50%;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .education-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card h4 {
+            font-size: 1.4rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .year-badge {
+            padding: 0.5rem 1.5rem;
+            background: rgba(168, 85, 247, 0.2);
+            border: 1px solid var(--secondary);
+            border-radius: 50px;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .education-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .education-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            color: var(--text-muted);
+        }
+
+        .education-icon {
+            color: var(--primary);
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+        }
+
+        /* Competition Cards */
+        .competition-card {
+            background: linear-gradient(135deg, var(--card-bg), rgba(15, 23, 42, 0.4));
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+
+        .competition-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 245, 255, 0.05), transparent);
+            transition: left 0.6s;
+        }
+
+        .competition-card:hover::before {
+            left: 100%;
+        }
+
+        .competition-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 15px 50px rgba(0, 245, 255, 0.3);
+            transform: translateX(10px);
+        }
+
+        .competition-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .competition-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.6rem;
+            color: var(--text);
+            transition: color 0.3s;
+        }
+
+        .competition-card:hover h3 {
+            color: var(--primary);
+        }
+
+        /* Contact Section */
+        .contact-card {
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.05), rgba(168, 85, 247, 0.05));
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--primary);
+            border-radius: 30px;
+            padding: 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 245, 255, 0.1), transparent);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .contact-card h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-card p {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(0, 245, 255, 0.1);
+            border: 2px solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            background: var(--primary);
+            color: var(--bg-dark);
+            transform: translateY(-5px) rotate(360deg);
+            box-shadow: 0 10px 30px rgba(0, 245, 255, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            background: rgba(10, 14, 26, 0.8);
+            backdrop-filter: blur(20px);
+        }
+
+        footer p {
+            color: var(--text-muted);
+        }
+
+        /* Icons (using simple text representations) */
+        .icon {
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            section {
+                padding: 4rem 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero {
+                padding-top: 120px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .education-header {
+                flex-direction: column;
+            }
+
+            .contact-card {
+                padding: 2rem;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-darker);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+    <div class="grid-pattern"></div>
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">AG</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="about" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="status-badge">🚀 Available for Opportunities</div>
+                <h1>Aimen Guedhami</h1>
+                <h2>Software Engineer | AI/ML Passionate</h2>
+                <p>
+                    Results-driven Software Engineering Graduate specializing in AI and Machine Learning. 
+                    Expert in architecting scalable AI solutions with deep experience in RAG, NLP, and Computer Vision. 
+                    Combines advanced research with robust MLOps principles to build high-impact applications from concept to production.
+                </p>
+                <div class="cta-buttons">
+                    <a href="mailto:aimen.guedhami@medtech.tn" class="btn btn-primary">
+                        <span class="icon">✉</span> Get In Touch
+                    </a>
+                    <a href="#contact" class="btn btn-outline">
+                        <span class="icon">📄</span> View Details
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Areas of Expertise -->
+    <section id="expertise">
+        <div class="container">
+            <h2 class="section-title">Areas of Expertise</h2>
+            <div class="card-grid">
+                <div class="card fade-in">
+                    <div class="card-icon">🤖</div>
+                    <h3>Natural Language Processing</h3>
+                    <p>Advanced NLP techniques for text analysis, understanding, and generation</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-icon">🔍</div>
+                    <h3>Retrieval-Augmented Generation</h3>
+                    <p>Building intelligent systems combining retrieval and generation for enhanced AI responses</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-icon">⚡</div>
+                    <h3>LLM Fine-Tuning</h3>
+                    <p>Customizing large language models for specific tasks and domains</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-icon">👁️</div>
+                    <h3>Computer Vision</h3>
+                    <p>Object detection, image recognition, and visual analysis systems</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-icon">📊</div>
+                    <h3>Predictive Modeling</h3>
+                    <p>Advanced analytics and forecasting using machine learning algorithms</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-icon">🏗️</div>
+                    <h3>ML System Design</h3>
+                    <p>End-to-end architecture for scalable machine learning solutions</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-icon">💻</div>
+                    <h3>Full-Stack AI Development</h3>
+                    <p>Building complete AI applications from backend to frontend</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Arsenal</h2>
+            
+            <div class="skills-category fade-in">
+                <h3>🧠 AI/ML Frameworks</h3>
+                <div class="skills-tags">
+                    <span class="skill-tag">TensorFlow</span>
+                    <span class="skill-tag">PyTorch</span>
+                    <span class="skill-tag">Keras</span>
+                    <span class="skill-tag">Scikit-learn</span>
+                    <span class="skill-tag">NLTK</span>
+                    <span class="skill-tag">Transformers</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">NumPy</span>
+                    <span class="skill-tag">FAISS</span>
+                    <span class="skill-tag">OpenCV</span>
+                </div>
+            </div>
+
+            <div class="skills-category fade-in">
+                <h3>💻 Programming Languages</h3>
+                <div class="skills-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">C</span>
+                    <span class="skill-tag">MATLAB</span>
+                    <span class="skill-tag">SQL</span>
+                </div>
+            </div>
+
+            <div class="skills-category fade-in">
+                <h3>🗄️ Databases</h3>
+                <div class="skills-tags">
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">MySQL</span>
+                </div>
+            </div>
+
+            <div class="skills-category fade-in">
+                <h3>🚀 DevOps & MLOps</h3>
+                <div class="skills-tags">
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">Kubernetes</span>
+                    <span class="skill-tag">Azure</span>
+                </div>
+            </div>
+
+            <div class="skills-category fade-in">
+                <h3>🌐 Web Development</h3>
+                <div class="skills-tags">
+                    <span class="skill-tag">React.js</span>
+                    <span class="skill-tag">React Native</span>
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">CSS</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-card fade-in">
+                <div class="education-header">
+                    <div>
+                        <h3>B.S. Software Engineering</h3>
+                        <h4>Mediterranean Institute of Technology</h4>
+                    </div>
+                    <div class="year-badge">2020 – 2025</div>
+                </div>
+                <div class="education-details">
+                    <div class="education-item">
+                        <span class="education-icon">🏆</span>
+                        <p>Awards: Best Project Recognition (2021, 2023)</p>
+                    </div>
+                    <div class="education-item">
+                        <span class="education-icon">📚</span>
+                        <p>Focus: Machine Learning, AI, Software Architecture, Data Structures & Algorithms</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <div class="card-grid">
+                <div class="card fade-in">
+                    <div class="card-icon">☁️</div>
+                    <h3>AWS Certified Cloud Practitioner</h3>
+                    <p>Cloud computing fundamentals and AWS services</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-icon">🔄</div>
+                    <h3>Professional Scrum Master I</h3>
+                    <p>Scrum.org - Agile project management</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-icon">🤖</div>
+                    <h3>Generative AI with LLMs</h3>
+                    <p>DeepLearning.AI - Advanced generative models</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-icon">🧮</div>
+                    <h3>TensorFlow for AI/ML</h3>
+                    <p>DeepLearning.AI - Deep learning frameworks</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-icon">📐</div>
+                    <h3>Calculus for ML & Data Science</h3>
+                    <p>DeepLearning.AI - Mathematical foundations</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-icon">🔒</div>
+                    <h3>Assets, Threats, Vulnerabilities</h3>
+                    <p>Google - Cybersecurity fundamentals</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competitions & Achievements -->
+    <section id="achievements">
+        <div class="container">
+            <h2 class="section-title">Competitions & Achievements</h2>
+            
+            <div class="competition-card fade-in">
+                <div class="competition-header">
+                    <h3>🏆 AI Hackathon 2nd Edition</h3>
+                    <span class="year-badge">2025</span>
+                </div>
+                <p>Tackled hallucination and out-of-date data problems applying a RAG approach while implementing Milvus Vector database and OpenAI API. Successfully created an intelligent system that maintains accuracy and relevance.</p>
+            </div>
+
+            <div class="competition-card fade-in">
+                <div class="competition-header">
+                    <h3>🏆 IEEEXTREME 16.0 & 17.0</h3>
+                    <span class="year-badge">2022, 2023</span>
+                </div>
+                <p>Placed in top percentile in 24-hour global programming competition solving complex algorithmic challenges under time constraints. Demonstrated exceptional problem-solving skills and technical proficiency.</p>
+            </div>
+
+            <div class="competition-card fade-in">
+                <div class="competition-header">
+                    <h3>🏆 WIE SMU Hackathon</h3>
+                    <span class="year-badge">2023-2024</span>
+                </div>
+                <p>Led organization of annual hackathon promoting women in tech. Participated in 2023 edition, developing a mental health prediction app using ML techniques, combining technical excellence with social impact.</p>
+            </div>
+
+            <div class="competition-card fade-in">
+                <div class="competition-header">
+                    <h3>🏆 CSTC 2.0 AI Hackathon</h3>
+                    <span class="year-badge">2023</span>
+                </div>
+                <p>Developed an AI-powered sentiment analysis tool in a 48-hour team-based hackathon. Gained practical experience with NLP techniques and transformer models (BERT, GPT), covering tokenization, embeddings, and attention mechanisms for text classification tasks.</p>
+            </div>
+
+            <div class="competition-card fade-in">
+                <div class="competition-header">
+                    <h3>🏆 Game Development Hackathon</h3>
+                    <span class="year-badge">2023</span>
+                </div>
+                <p>Designed gamification strategies using the Octalysis framework to boost user engagement. Applied game design principles to create compelling user experiences and drive meaningful interactions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact-card fade-in">
+                <h2>Let's Connect</h2>
+                <p>I'm always open to discussing new opportunities, innovative projects, or collaborations in AI/ML. Let's create something amazing together!</p>
+                <div class="contact-buttons">
+                    <a href="mailto:aimen.guedhami@medtech.tn" class="btn btn-primary">
+                        <span class="icon">✉</span> aimen.guedhami@medtech.tn
+                    </a>
+                    <a href="tel:+21628544928" class="btn btn-outline">
+                        <span class="icon">📱</span> +216 28 544 928
+                    </a>
+                </div>
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/aimen-guedhami" target="_blank" class="social-icon" aria-label="LinkedIn">
+                        in
+                    </a>
+                    <a href="https://github.com/Gathaa" target="_blank" class="social-icon" aria-label="GitHub">
+                        gh
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2025 Aimen Guedhami. Crafted with precision and passion.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el)
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add parallax effect to background blobs
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const blobs = document.querySelectorAll('.blob');
+            blobs.forEach((blob, index) => {
+                const speed = 0.5 + (index * 0.1);
+                blob.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
