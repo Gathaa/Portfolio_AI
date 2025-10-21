@@ -286,6 +286,18 @@
             animation: pulse 2s infinite;
         }
 
+        .status-badge::before {
+            content: '●';
+            margin-right: 0.5rem;
+            color: var(--primary);
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
         @keyframes pulse {
             0%, 100% {
                 box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
@@ -297,7 +309,7 @@
 
         h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(3rem, 8vw, 7rem);
+            font-size: clamp(2.5rem, 8vw, 7rem);
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 1rem;
@@ -319,14 +331,14 @@
         }
 
         .hero h2 {
-            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-size: clamp(1.2rem, 3vw, 2.5rem);
             color: var(--text-muted);
             margin-bottom: 2rem;
             font-weight: 600;
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2vw, 1.2rem);
             color: var(--text-muted);
             max-width: 800px;
             margin-bottom: 3rem;
@@ -400,6 +412,7 @@
             display: flex;
             align-items: center;
             gap: 1rem;
+            flex-wrap: wrap;
         }
 
         .section-title::before {
@@ -413,7 +426,7 @@
         /* Cards */
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
@@ -477,9 +490,25 @@
         }
 
         .card-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1.5rem;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.2), rgba(168, 85, 247, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .card-icon::before {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border: 3px solid var(--primary);
+            border-radius: 6px;
+            transform: rotate(45deg);
         }
 
         .card h3 {
@@ -492,6 +521,7 @@
         .card p {
             color: var(--text-muted);
             line-height: 1.6;
+            font-size: 0.95rem;
         }
 
         /* Skills Section */
@@ -536,7 +566,7 @@
 
         .skills-category h3 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.8rem;
+            font-size: clamp(1.3rem, 2vw, 1.8rem);
             color: var(--primary);
             margin-bottom: 1.5rem;
         }
@@ -619,13 +649,13 @@
 
         .education-card h3 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 2rem;
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
             color: var(--primary);
             margin-bottom: 0.5rem;
         }
 
         .education-card h4 {
-            font-size: 1.4rem;
+            font-size: clamp(1.1rem, 1.8vw, 1.4rem);
             color: var(--text-muted);
             font-weight: 500;
         }
@@ -637,6 +667,7 @@
             border-radius: 50px;
             color: var(--secondary);
             font-weight: 600;
+            white-space: nowrap;
         }
 
         .education-details {
@@ -656,6 +687,7 @@
             color: var(--primary);
             flex-shrink: 0;
             margin-top: 0.2rem;
+            font-size: 1.2rem;
         }
 
         /* Competition Cards */
@@ -703,13 +735,19 @@
 
         .competition-card h3 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.6rem;
+            font-size: clamp(1.2rem, 2vw, 1.6rem);
             color: var(--text);
             transition: color 0.3s;
         }
 
         .competition-card:hover h3 {
             color: var(--primary);
+        }
+
+        .competition-card p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 0.95rem;
         }
 
         /* Contact Section */
@@ -746,14 +784,14 @@
 
         .contact-card h2 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 3rem;
+            font-size: clamp(2rem, 4vw, 3rem);
             margin-bottom: 1.5rem;
             position: relative;
             z-index: 1;
         }
 
         .contact-card p {
-            font-size: 1.3rem;
+            font-size: clamp(1rem, 2vw, 1.3rem);
             color: var(--text-muted);
             margin-bottom: 3rem;
             max-width: 600px;
@@ -792,8 +830,14 @@
             justify-content: center;
             color: var(--primary);
             text-decoration: none;
-            font-size: 1.5rem;
             transition: all 0.3s;
+        }
+
+        .social-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--primary);
+            transition: fill 0.3s;
         }
 
         .social-icon:hover {
@@ -801,6 +845,10 @@
             color: var(--bg-dark);
             transform: translateY(-5px) rotate(360deg);
             box-shadow: 0 10px 30px rgba(0, 245, 255, 0.5);
+        }
+
+        .social-icon:hover svg {
+            fill: var(--bg-dark);
         }
 
         /* Footer */
@@ -814,53 +862,7 @@
 
         footer p {
             color: var(--text-muted);
-        }
-
-        /* Icons (using simple text representations) */
-        .icon {
-            display: inline-block;
-            font-weight: 600;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            section {
-                padding: 4rem 1rem;
-            }
-
-            nav ul {
-                gap: 1rem;
-                font-size: 0.9rem;
-            }
-
-            .hero {
-                padding-top: 120px;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .card-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .education-header {
-                flex-direction: column;
-            }
-
-            .contact-card {
-                padding: 2rem;
-            }
-
-            .contact-buttons {
-                flex-direction: column;
-            }
+            font-size: 0.95rem;
         }
 
         /* Scroll animations */
@@ -891,6 +893,238 @@
 
         ::-webkit-scrollbar-thumb:hover {
             background: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .blob-1, .blob-2, .blob-3 {
+                filter: blur(60px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 4rem 1rem;
+            }
+
+            nav {
+                padding: 1rem 1rem;
+            }
+
+            nav .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.85rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .hero {
+                padding-top: 140px;
+                min-height: auto;
+                padding-bottom: 4rem;
+            }
+
+            .status-badge {
+                font-size: 0.8rem;
+                padding: 0.4rem 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+                padding: 0.9rem 2rem;
+                font-size: 1rem;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+
+            .card-icon {
+                width: 50px;
+                height: 50px;
+                margin-bottom: 1rem;
+            }
+
+            .card-icon::before {
+                width: 20px;
+                height: 20px;
+                border-width: 2px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+
+            .section-title::before {
+                width: 40px;
+                height: 3px;
+            }
+
+            .skills-category {
+                padding: 1.5rem;
+            }
+
+            .skills-tags {
+                gap: 0.8rem;
+            }
+
+            .skill-tag {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .education-card {
+                padding: 1.5rem;
+            }
+
+            .education-header {
+                flex-direction: column;
+                align-items: start;
+            }
+
+            .competition-card {
+                padding: 1.5rem;
+            }
+
+            .competition-card:hover {
+                transform: translateX(0) translateY(-5px);
+            }
+
+            .contact-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .contact-buttons .btn {
+                font-size: 0.95rem;
+            }
+
+            .social-links {
+                gap: 1.5rem;
+            }
+
+            .social-icon {
+                width: 50px;
+                height: 50px;
+            }
+
+            .social-icon svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            .blob-1 {
+                width: 300px;
+                height: 300px;
+            }
+
+            .blob-2 {
+                width: 250px;
+                height: 250px;
+            }
+
+            .blob-3 {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            nav ul {
+                font-size: 0.75rem;
+                gap: 0.6rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .hero h2 {
+                font-size: 1.1rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .card h3 {
+                font-size: 1.1rem;
+            }
+
+            .card p {
+                font-size: 0.85rem;
+            }
+
+            .skills-category h3 {
+                font-size: 1.2rem;
+            }
+
+            .skill-tag {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .education-card h3 {
+                font-size: 1.3rem;
+            }
+
+            .education-card h4 {
+                font-size: 1rem;
+            }
+
+            .year-badge {
+                font-size: 0.85rem;
+                padding: 0.4rem 1rem;
+            }
+
+            .competition-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .competition-card p {
+                font-size: 0.85rem;
+            }
+
+            .contact-card h2 {
+                font-size: 1.8rem;
+            }
+
+            .contact-card p {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -933,7 +1167,7 @@
     <section id="about" class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="status-badge">🚀 Available for Opportunities</div>
+                <div class="status-badge">Available for Opportunities</div>
                 <h1>Aimen Guedhami</h1>
                 <h2>Software Engineer | AI/ML Passionate</h2>
                 <p>
@@ -942,12 +1176,8 @@
                     Combines advanced research with robust MLOps principles to build high-impact applications from concept to production.
                 </p>
                 <div class="cta-buttons">
-                    <a href="mailto:aimen.guedhami@medtech.tn" class="btn btn-primary">
-                        <span class="icon">✉</span> Get In Touch
-                    </a>
-                    <a href="#contact" class="btn btn-outline">
-                        <span class="icon">📄</span> View Details
-                    </a>
+                    <a href="mailto:aimen.guedhami@medtech.tn" class="btn btn-primary">Get In Touch</a>
+                    <a href="#contact" class="btn btn-outline">View Details</a>
                 </div>
             </div>
         </div>
@@ -959,37 +1189,37 @@
             <h2 class="section-title">Areas of Expertise</h2>
             <div class="card-grid">
                 <div class="card fade-in">
-                    <div class="card-icon">🤖</div>
+                    <div class="card-icon"></div>
                     <h3>Natural Language Processing</h3>
                     <p>Advanced NLP techniques for text analysis, understanding, and generation</p>
                 </div>
                 <div class="card fade-in">
-                    <div class="card-icon">🔍</div>
+                    <div class="card-icon"></div>
                     <h3>Retrieval-Augmented Generation</h3>
                     <p>Building intelligent systems combining retrieval and generation for enhanced AI responses</p>
                 </div>
                 <div class="card fade-in">
-                    <div class="card-icon">⚡</div>
+                    <div class="card-icon"></div>
                     <h3>LLM Fine-Tuning</h3>
                     <p>Customizing large language models for specific tasks and domains</p>
                 </div>
                 <div class="card fade-in">
-                    <div class="card-icon">👁️</div>
+                    <div class="card-icon"></div>
                     <h3>Computer Vision</h3>
                     <p>Object detection, image recognition, and visual analysis systems</p>
                 </div>
                 <div class="card fade-in">
-                    <div class="card-icon">📊</div>
+                    <div class="card-icon"></div>
                     <h3>Predictive Modeling</h3>
                     <p>Advanced analytics and forecasting using machine learning algorithms</p>
                 </div>
                 <div class="card fade-in">
-                    <div class="card-icon">🏗️</div>
+                    <div class="card-icon"></div>
                     <h3>ML System Design</h3>
                     <p>End-to-end architecture for scalable machine learning solutions</p>
                 </div>
                 <div class="card fade-in">
-                    <div class="card-icon">💻</div>
+                    <div class="card-icon"></div>
                     <h3>Full-Stack AI Development</h3>
                     <p>Building complete AI applications from backend to frontend</p>
                 </div>
@@ -1003,7 +1233,7 @@
             <h2 class="section-title">Technical Arsenal</h2>
             
             <div class="skills-category fade-in">
-                <h3>🧠 AI/ML Frameworks</h3>
+                <h3>AI/ML Frameworks</h3>
                 <div class="skills-tags">
                     <span class="skill-tag">TensorFlow</span>
                     <span class="skill-tag">PyTorch</span>
@@ -1019,7 +1249,7 @@
             </div>
 
             <div class="skills-category fade-in">
-                <h3>💻 Programming Languages</h3>
+                <h3>Programming Languages</h3>
                 <div class="skills-tags">
                     <span class="skill-tag">Python</span>
                     <span class="skill-tag">Java</span>
@@ -1030,7 +1260,7 @@
             </div>
 
             <div class="skills-category fade-in">
-                <h3>🗄️ Databases</h3>
+                <h3>Databases</h3>
                 <div class="skills-tags">
                     <span class="skill-tag">MongoDB</span>
                     <span class="skill-tag">MySQL</span>
@@ -1038,7 +1268,7 @@
             </div>
 
             <div class="skills-category fade-in">
-                <h3>🚀 DevOps & MLOps</h3>
+                <h3>DevOps & MLOps</h3>
                 <div class="skills-tags">
                     <span class="skill-tag">Git</span>
                     <span class="skill-tag">Docker</span>
@@ -1048,7 +1278,7 @@
             </div>
 
             <div class="skills-category fade-in">
-                <h3>🌐 Web Development</h3>
+                <h3>Web Development</h3>
                 <div class="skills-tags">
                     <span class="skill-tag">React.js</span>
                     <span class="skill-tag">React Native</span>
@@ -1073,11 +1303,11 @@
                 </div>
                 <div class="education-details">
                     <div class="education-item">
-                        <span class="education-icon">🏆</span>
+                        <span class="education-icon">▸</span>
                         <p>Awards: Best Project Recognition (2021, 2023)</p>
                     </div>
                     <div class="education-item">
-                        <span class="education-icon">📚</span>
+                        <span class="education-icon">▸</span>
                         <p>Focus: Machine Learning, AI, Software Architecture, Data Structures & Algorithms</p>
                     </div>
                 </div>
@@ -1091,32 +1321,32 @@
             <h2 class="section-title">Certifications</h2>
             <div class="card-grid">
                 <div class="card fade-in">
-                    <div class="card-icon">☁️</div>
+                    <div class="card-icon"></div>
                     <h3>AWS Certified Cloud Practitioner</h3>
                     <p>Cloud computing fundamentals and AWS services</p>
                 </div>
                 <div class="card fade-in">
-                    <div class="card-icon">🔄</div>
+                    <div class="card-icon"></div>
                     <h3>Professional Scrum Master I</h3>
                     <p>Scrum.org - Agile project management</p>
                 </div>
                 <div class="card fade-in">
-                    <div class="card-icon">🤖</div>
+                    <div class="card-icon"></div>
                     <h3>Generative AI with LLMs</h3>
                     <p>DeepLearning.AI - Advanced generative models</p>
                 </div>
                 <div class="card fade-in">
-                    <div class="card-icon">🧮</div>
+                    <div class="card-icon"></div>
                     <h3>TensorFlow for AI/ML</h3>
                     <p>DeepLearning.AI - Deep learning frameworks</p>
                 </div>
                 <div class="card fade-in">
-                    <div class="card-icon">📐</div>
+                    <div class="card-icon"></div>
                     <h3>Calculus for ML & Data Science</h3>
                     <p>DeepLearning.AI - Mathematical foundations</p>
                 </div>
                 <div class="card fade-in">
-                    <div class="card-icon">🔒</div>
+                    <div class="card-icon"></div>
                     <h3>Assets, Threats, Vulnerabilities</h3>
                     <p>Google - Cybersecurity fundamentals</p>
                 </div>
@@ -1131,7 +1361,7 @@
             
             <div class="competition-card fade-in">
                 <div class="competition-header">
-                    <h3>🏆 AI Hackathon 2nd Edition</h3>
+                    <h3>AI Hackathon 2nd Edition</h3>
                     <span class="year-badge">2025</span>
                 </div>
                 <p>Tackled hallucination and out-of-date data problems applying a RAG approach while implementing Milvus Vector database and OpenAI API. Successfully created an intelligent system that maintains accuracy and relevance.</p>
@@ -1139,7 +1369,7 @@
 
             <div class="competition-card fade-in">
                 <div class="competition-header">
-                    <h3>🏆 IEEEXTREME 16.0 & 17.0</h3>
+                    <h3>IEEEXTREME 16.0 & 17.0</h3>
                     <span class="year-badge">2022, 2023</span>
                 </div>
                 <p>Placed in top percentile in 24-hour global programming competition solving complex algorithmic challenges under time constraints. Demonstrated exceptional problem-solving skills and technical proficiency.</p>
@@ -1147,7 +1377,7 @@
 
             <div class="competition-card fade-in">
                 <div class="competition-header">
-                    <h3>🏆 WIE SMU Hackathon</h3>
+                    <h3>WIE SMU Hackathon</h3>
                     <span class="year-badge">2023-2024</span>
                 </div>
                 <p>Led organization of annual hackathon promoting women in tech. Participated in 2023 edition, developing a mental health prediction app using ML techniques, combining technical excellence with social impact.</p>
@@ -1155,7 +1385,7 @@
 
             <div class="competition-card fade-in">
                 <div class="competition-header">
-                    <h3>🏆 CSTC 2.0 AI Hackathon</h3>
+                    <h3>CSTC 2.0 AI Hackathon</h3>
                     <span class="year-badge">2023</span>
                 </div>
                 <p>Developed an AI-powered sentiment analysis tool in a 48-hour team-based hackathon. Gained practical experience with NLP techniques and transformer models (BERT, GPT), covering tokenization, embeddings, and attention mechanisms for text classification tasks.</p>
@@ -1163,7 +1393,7 @@
 
             <div class="competition-card fade-in">
                 <div class="competition-header">
-                    <h3>🏆 Game Development Hackathon</h3>
+                    <h3>Game Development Hackathon</h3>
                     <span class="year-badge">2023</span>
                 </div>
                 <p>Designed gamification strategies using the Octalysis framework to boost user engagement. Applied game design principles to create compelling user experiences and drive meaningful interactions.</p>
@@ -1178,19 +1408,19 @@
                 <h2>Let's Connect</h2>
                 <p>I'm always open to discussing new opportunities, innovative projects, or collaborations in AI/ML. Let's create something amazing together!</p>
                 <div class="contact-buttons">
-                    <a href="mailto:aimen.guedhami@medtech.tn" class="btn btn-primary">
-                        <span class="icon">✉</span> aimen.guedhami@medtech.tn
-                    </a>
-                    <a href="tel:+21628544928" class="btn btn-outline">
-                        <span class="icon">📱</span> +216 28 544 928
-                    </a>
+                    <a href="mailto:aimen.guedhami@medtech.tn" class="btn btn-primary">aimen.guedhami@medtech.tn</a>
+                    <a href="tel:+21628544928" class="btn btn-outline">+216 28 544 928</a>
                 </div>
                 <div class="social-links">
                     <a href="https://linkedin.com/in/aimen-guedhami" target="_blank" class="social-icon" aria-label="LinkedIn">
-                        in
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
                     </a>
                     <a href="https://github.com/Gathaa" target="_blank" class="social-icon" aria-label="GitHub">
-                        gh
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
                     </a>
                 </div>
             </div>
@@ -1239,13 +1469,20 @@
         });
 
         // Add parallax effect to background blobs
+        let ticking = false;
         window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const blobs = document.querySelectorAll('.blob');
-            blobs.forEach((blob, index) => {
-                const speed = 0.5 + (index * 0.1);
-                blob.style.transform = `translateY(${scrolled * speed}px)`;
-            });
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrolled = window.pageYOffset;
+                    const blobs = document.querySelectorAll('.blob');
+                    blobs.forEach((blob, index) => {
+                        const speed = 0.5 + (index * 0.1);
+                        blob.style.transform = `translateY(${scrolled * speed}px)`;
+                    });
+                    ticking = false;
+                });
+                ticking = true;
+            }
         });
     </script>
 </body>
